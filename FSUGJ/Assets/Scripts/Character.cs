@@ -53,21 +53,25 @@ public class Character : MonoBehaviour
             {
                 hasTask = true;
                 taskDuration = Random.Range(1f, 10f);
+                bool hasReachedTask = false;
 
-                //Get random location
-                Vector3 taskPos = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
-
-                // Go to location
-                agent.destination = taskPos;
-
-
-                //Wait at location until task is 'done'
-                while (Vector3.Distance(transform.position, taskPos) >= 1f)
+                while (!hasReachedTask)
                 {
-                    Debug.Log("Dist to target: " + Vector3.Distance(transform.position, taskPos));
-                    yield return new WaitForEndOfFrame();
-                }
+                    //Get random location
+                    GameObject task = taskLocations[Random.Range(0, taskLocations.Length - 1)];
 
+                    // Go to location
+                    agent.destination = task.transform.position;
+
+
+                    //Wait at location until task is 'done'
+                    while (Vector3.Distance(transform.position, task.transform.position) >= 1f)
+                    {
+                        //Debug.Log("Dist to target: " + Vector3.Distance(transform.position, taskPos));
+                        yield return new WaitForEndOfFrame();
+                    }
+                }
+                
                 yield return new WaitForSeconds(taskDuration);
 
                 hasTask = false;

@@ -21,10 +21,17 @@ public class RealmSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        realm_2D.gameObject.SetActive(true);
-        realm_3D.gameObject.SetActive(false);
-
-        is2D = true;
+        if (is2D)
+        {
+            realm_2D.gameObject.SetActive(true);
+            realm_3D.gameObject.SetActive(false);
+        }
+        else
+        {
+            realm_2D.gameObject.SetActive(false);
+            realm_3D.gameObject.SetActive(true);
+        }
+        
         all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
     }
 
