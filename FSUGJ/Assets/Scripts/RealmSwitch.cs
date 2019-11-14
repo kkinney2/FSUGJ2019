@@ -12,6 +12,8 @@ public class RealmSwitch : MonoBehaviour
     public GameObject realm_2D;
     public GameObject realm_3D;
 
+    Character[] all_Characters;
+
     public float switchDelay = 0.5f;
 
     public bool isSwitchingRealms = false;
@@ -23,6 +25,7 @@ public class RealmSwitch : MonoBehaviour
         realm_3D.gameObject.SetActive(false);
 
         is2D = true;
+        all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,21 @@ public class RealmSwitch : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && !isSwitchingRealms)
         {
             StartCoroutine(SwitchRealms());
+        }
+    }
+
+    void SwitchCharacters()
+    {
+        foreach (Character a_Character in all_Characters)
+        {
+            if (a_Character.is2D == true)
+            {
+                a_Character.is2D = false;
+            }
+            else
+            {
+                a_Character.is2D = true;
+            }
         }
     }
 
@@ -43,17 +61,20 @@ public class RealmSwitch : MonoBehaviour
 
         float numSwitches = 0;
         //while (numSwitches <= 10)
+        SwitchCharacters();
         while (numSwitches < 1)
         {
             if (realm_3D.activeSelf == false)
             {
+                realm_2D.SetActive(false);
                 realm_3D.SetActive(true);
             }
             else
             {
+                realm_2D.SetActive(true);
                 realm_3D.SetActive(false);
             }
-            
+
             yield return new WaitForSeconds(switchDelay);
 
             numSwitches++;
@@ -71,7 +92,6 @@ public class RealmSwitch : MonoBehaviour
 
             is2D = true;
         }
-        
 
         isSwitchingRealms = false;
     }
