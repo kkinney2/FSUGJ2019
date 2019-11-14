@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        
+
 
         #region Camera
         yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -103,6 +103,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    
+
 
 }
