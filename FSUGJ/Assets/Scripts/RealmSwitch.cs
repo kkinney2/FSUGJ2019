@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RealmSwitch : MonoBehaviour
 {
+    GameController gameController;
+
     public bool is2D;
 
     //public Switchable realm_2D;
@@ -23,6 +25,9 @@ public class RealmSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController.switcher = this;
+
         if (is2D)
         {
             realm_2D.gameObject.SetActive(true);
@@ -40,7 +45,8 @@ public class RealmSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E) && !isSwitchingRealms)
+        /*
+        if ((Input.GetKeyUp(KeyCode.E)||) && !isSwitchingRealms)
         {
             all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
             if (realmSwitchToggle)
@@ -51,11 +57,17 @@ public class RealmSwitch : MonoBehaviour
             {
                 StartCoroutine(Temp3DRealm());
             }
-        }
+        } */
+    }
+
+    public void Switch_Realms()
+    {
+        StartCoroutine(Temp3DRealm());
     }
 
     void SwitchCharacters()
     {
+        all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
         foreach (Character a_Character in all_Characters)
         {
             if (a_Character.is2D == true)
