@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [Range(1, 3)]
     public int difficulty = 1;
+    public bool isPlaying = true;
 
     public CharacterSpawner spawner;
     public RealmSwitch switcher;
@@ -16,24 +17,57 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DeltaUpdate());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (d_Time > timeTillSwitch)
+
+
+    }
+
+    IEnumerator DeltaUpdate()
+    {
+        while (isPlaying)
         {
-            switcher.Switch_Realms();
-            d_Time = 0f;
-            timeTillSwitch = Random.Range(3, 10f);
-        }
-        else
-        {
-            if (!switcher.isSwitchingRealms)
+            yield return new WaitForEndOfFrame();
+            if (d_Time > timeTillSwitch)
             {
-                d_Time += Time.deltaTime;
+                switcher.Switch_Realms();
+                d_Time = 0f;
+                timeTillSwitch = Random.Range(3, 10f);
+            }
+            else
+            {
+                if (!switcher.isSwitchingRealms)
+                {
+                    d_Time += Time.deltaTime;
+                }
             }
         }
+    }
+
+    public bool CompareWithTheOne(GameObject a_Character)
+    {
+        if (a_Character == spawner.theOne)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
+    public void WinState()
+    {
+
+    }
+
+    public void LoseState()
+    {
+
     }
 }

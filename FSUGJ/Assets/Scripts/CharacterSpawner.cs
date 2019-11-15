@@ -14,6 +14,8 @@ public class CharacterSpawner : MonoBehaviour
     public int numOfCharacters = 5;
     GameObject[] spawnLocations;
 
+    public GameObject theOne;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class CharacterSpawner : MonoBehaviour
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
+                theOne = a_Number;
 
                 // Attach Number
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
@@ -87,6 +90,7 @@ public class CharacterSpawner : MonoBehaviour
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
+                theOne = a_Number;
 
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
@@ -116,6 +120,7 @@ public class CharacterSpawner : MonoBehaviour
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
+                theOne = a_Number;
 
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
