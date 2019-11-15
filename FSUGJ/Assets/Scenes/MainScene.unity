@@ -955,7 +955,7 @@ MonoBehaviour:
   switchDelay: 0.2
   duration_3DRealm: 0.5
   isSwitchingRealms: 0
-  realmSwitchToggle: 0
+  realmSwitchToggle: 1
 --- !u!4 &109019890
 Transform:
   m_ObjectHideFlags: 0
@@ -5457,6 +5457,16 @@ MonoBehaviour:
   - {fileID: 3028698804822145277, guid: 3c987b4eef32a434a872e49fe4d09ada, type: 3}
   - {fileID: 7216893381666601577, guid: 80bb9729daf9415478b8855bf304070c, type: 3}
   - {fileID: 3806046666752274483, guid: 31d6a923ac3c51643b36640be459baac, type: 3}
+  numbers:
+  - {fileID: 2876928466970594653, guid: 391e059ee7b2e0b4a994ec1d56e1b7e4, type: 3}
+  - {fileID: 7828405051419414830, guid: 1cd36b6eee7c62d4d8265df0d150e054, type: 3}
+  - {fileID: 2890324109501173952, guid: 95d1b53c5f5c0a64ba27cd4569341c0d, type: 3}
+  - {fileID: 3860042374254224977, guid: 5c0504aae79d7b641830cbfc4cd92360, type: 3}
+  - {fileID: 3123119648165494520, guid: fb63ab53e179de14087ef785c96c8afc, type: 3}
+  - {fileID: 1497536254717089790, guid: b5fd648780b8c664c8243e37c33330a2, type: 3}
+  - {fileID: 1217067683139825219, guid: d5dd08a36a695674cb5cadf90b30443c, type: 3}
+  - {fileID: 2258571703201234620, guid: 6fc32376c82ed2241978a3710da4a235, type: 3}
+  - {fileID: 1643435214421257758, guid: 4be4af071750b504998a4f3484b3a627, type: 3}
   numOfCharacters: 5
 --- !u!1 &604743301
 GameObject:
