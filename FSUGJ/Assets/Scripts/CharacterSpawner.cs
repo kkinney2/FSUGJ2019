@@ -12,7 +12,7 @@ public class CharacterSpawner : MonoBehaviour
     public GameObject[] numbers;
     GameObject[] temp_Numbers;
     public int numOfCharacters = 5;
-    GameObject[] taskLocations;
+    GameObject[] spawnLocations;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class CharacterSpawner : MonoBehaviour
         gameController.spawner = this;
         difficulty = gameController.difficulty;
 
-        taskLocations = GameObject.FindGameObjectsWithTag("Task_Location");
+        spawnLocations = GameObject.FindGameObjectsWithTag("Spawn_Location");
 
         GameObject a_Character;
         GameObject a_Number;
@@ -42,7 +42,7 @@ public class CharacterSpawner : MonoBehaviour
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
 
                 #region Randomize Numbers Order
                 temp_Numbers = new GameObject[numbers.Length - 1];
@@ -74,7 +74,7 @@ public class CharacterSpawner : MonoBehaviour
                     a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                     a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                    a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                    a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
                     y++;
                 }
                 #endregion
@@ -91,7 +91,7 @@ public class CharacterSpawner : MonoBehaviour
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
 
                 for (int i = 0; i < numOfCharacters - 1; i++)
                 {
@@ -105,7 +105,7 @@ public class CharacterSpawner : MonoBehaviour
                     a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                     a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                    a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                    a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
                 }
                 #endregion
                 break;
@@ -120,7 +120,7 @@ public class CharacterSpawner : MonoBehaviour
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
 
                 for (int i = 0; i < numOfCharacters * numOfCharacters; i++)
                 {
@@ -134,7 +134,7 @@ public class CharacterSpawner : MonoBehaviour
                     a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                     a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
 
-                    a_Character.transform.position = taskLocations[Random.Range(0, taskLocations.Length - 1)].transform.position;
+                    a_Character.transform.position = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].transform.position;
                 }
                 #endregion
                 break;

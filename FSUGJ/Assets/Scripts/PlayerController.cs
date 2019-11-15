@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        #region Movement
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
@@ -99,10 +100,18 @@ public class PlayerController : MonoBehaviour
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
+        #endregion
 
+        RaycastHit hit;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward), out hit, 5);
 
+        if (hit.collider != null)
+        {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                Debug.Log("User input detected!");
+            }
+        }
     }
-
-
 
 }

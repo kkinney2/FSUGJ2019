@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2035482427718538965}
   - component: {fileID: 2035482427718538964}
   - component: {fileID: 2035482427718538962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatientBlondeAdult
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035482427718538967}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.72, y: -0.23, z: -7.8483458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -61,7 +61,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2035482427718538967}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035482428495261811}
   - component: {fileID: 2035482428495261808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035482428598044067}
   - component: {fileID: 2035482428598044064}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,8 @@ GameObject:
   - component: {fileID: 285431192186799944}
   - component: {fileID: 599887209040105218}
   - component: {fileID: 3286573250813355288}
-  m_Layer: 0
+  - component: {fileID: 4033697663026157623}
+  m_Layer: 8
   m_Name: PatientBlondeAdult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,3 +259,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!65 &4033697663026157623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071340615492721960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6103637, y: 8.005129, z: 0.2}
+  m_Center: {x: 0.19308588, y: 4.0025644, z: 0}

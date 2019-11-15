@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public RealmSwitch switcher;
 
     float d_Time = 0;
+    float timeTillSwitch = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,18 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (d_Time > 3f)
+        if (d_Time > timeTillSwitch)
         {
             switcher.Switch_Realms();
-            d_Time = 0;
+            d_Time = 0f;
+            timeTillSwitch = Random.Range(3, 10f);
         }
         else
         {
-            d_Time += Time.deltaTime;
+            if (!switcher.isSwitchingRealms)
+            {
+                d_Time += Time.deltaTime;
+            }
         }
     }
 }
