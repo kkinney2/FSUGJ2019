@@ -70,6 +70,7 @@ public class Character : MonoBehaviour
                         //Debug.Log("Dist to target: " + Vector3.Distance(transform.position, taskPos));
                         yield return new WaitForEndOfFrame();
                     }
+                    hasReachedTask = true;
                 }
                 
                 yield return new WaitForSeconds(taskDuration);

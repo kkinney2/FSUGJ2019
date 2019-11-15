@@ -15,8 +15,10 @@ public class RealmSwitch : MonoBehaviour
     Character[] all_Characters;
 
     public float switchDelay = 0.5f;
+    public float duration_3DRealm = 0.5f;
 
     public bool isSwitchingRealms = false;
+    public bool realmSwitchToggle = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class RealmSwitch : MonoBehaviour
             realm_2D.gameObject.SetActive(false);
             realm_3D.gameObject.SetActive(true);
         }
-        
+
         all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
     }
 
@@ -40,7 +42,15 @@ public class RealmSwitch : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E) && !isSwitchingRealms)
         {
-            StartCoroutine(SwitchRealms());
+            all_Characters = UnityEngine.Object.FindObjectsOfType<Character>();
+            if (realmSwitchToggle)
+            {
+                StartCoroutine(SwitchRealms());
+            }
+            else
+            {
+                StartCoroutine(Temp3DRealm());
+            }
         }
     }
 
@@ -57,6 +67,41 @@ public class RealmSwitch : MonoBehaviour
                 a_Character.is2D = true;
             }
         }
+    }
+
+    IEnumerator Temp3DRealm()
+    {
+        isSwitchingRealms = true;
+
+        SwitchCharacters();
+        realm_2D.SetActive(false);
+        realm_3D.SetActive(true);
+
+        // TODO: Insert TV static here
+        #region Test Flicker
+        /*
+        yield return new WaitForSeconds(duration_3DRealm / 3f);
+
+        SwitchCharacters();
+        realm_2D.SetActive(true);
+        realm_3D.SetActive(false);
+
+        yield return new WaitForSeconds(duration_3DRealm / 3f);
+
+        SwitchCharacters();
+
+        realm_2D.SetActive(false);
+        realm_3D.SetActive(true);
+
+        */
+        #endregion
+        yield return new WaitForSeconds(duration_3DRealm);
+
+        SwitchCharacters();
+        realm_2D.SetActive(true);
+        realm_3D.SetActive(false);
+
+        isSwitchingRealms = false;
     }
 
     IEnumerator SwitchRealms()
