@@ -36,10 +36,12 @@ public class CharacterSpawner : MonoBehaviour
                 int randomCharNum = Random.Range(0, characters.Length - 1);
                 a_Character = Instantiate(characters[randomCharNum]);
                 a_Character.transform.SetParent(this.transform);
+                theOne = a_Character;
+                theOne.GetComponent<Character>().isTheOne = true;
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
-                theOne = a_Number;
+
 
                 // Attach Number
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
@@ -87,10 +89,11 @@ public class CharacterSpawner : MonoBehaviour
                 #region Random Characters
                 a_Character = Instantiate(characters[Random.Range(0, characters.Length - 1)]);
                 a_Character.transform.SetParent(this.transform);
+                theOne = a_Character;
+                theOne.GetComponent<Character>().isTheOne = true;
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
-                theOne = a_Number;
 
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
@@ -117,10 +120,11 @@ public class CharacterSpawner : MonoBehaviour
                 #region Lots of Random Characters
                 a_Character = Instantiate(characters[Random.Range(0, characters.Length - 1)]);
                 a_Character.transform.SetParent(this.transform);
+                theOne = a_Character;
+                theOne.GetComponent<Character>().isTheOne = true;
 
                 // Spawn the '1'
                 a_Number = Instantiate(numbers[0]);
-                theOne = a_Number;
 
                 a_Number.transform.position = a_Character.GetComponent<Character>().body_Num.transform.position;
                 a_Number.transform.SetParent(a_Character.GetComponent<Character>().body_Num.transform);
@@ -146,6 +150,7 @@ public class CharacterSpawner : MonoBehaviour
             default:
                 break;
         }
+
 
 
     }

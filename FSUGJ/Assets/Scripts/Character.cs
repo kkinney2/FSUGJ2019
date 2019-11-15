@@ -16,6 +16,11 @@ public class Character : MonoBehaviour
 
     public bool is2D = true;
 
+    public bool isTheOne = false;
+
+    public bool isBeingLookedAt = false;
+    public GameObject halo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,16 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isBeingLookedAt)
+        {
+            halo.gameObject.SetActive(true);
+            isBeingLookedAt = false;
+        }
+        else
+        {
+            halo.gameObject.SetActive(false);
+        }
+
         if (is2D)
         {
             body_2D.SetActive(true);

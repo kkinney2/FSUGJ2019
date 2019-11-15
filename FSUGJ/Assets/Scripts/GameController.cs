@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour
     public CharacterSpawner spawner;
     public RealmSwitch switcher;
 
+    public Transform winRoom;
+    public Transform loseRoom;
+    public GameObject player;
+
     float d_Time = 0;
     float timeTillSwitch = 10f;
 
@@ -23,7 +27,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonUp("Cancel"))
+        {
+            Application.Quit();
+        }
 
     }
 
@@ -47,10 +54,16 @@ public class GameController : MonoBehaviour
             }
         }
     }
+    IEnumerator RestartGame()
+    {
+        yield return new WaitForSeconds(10f);
+        LoadScene tempLoad = new LoadScene();
+        tempLoad.Load(0);
+    }
 
     public bool CompareWithTheOne(GameObject a_Character)
     {
-        if (a_Character == spawner.theOne)
+        if (a_Character.GetComponent<Character>().isTheOne)
         {
             return true;
         }
@@ -63,11 +76,17 @@ public class GameController : MonoBehaviour
 
     public void WinState()
     {
-
+        Debug.Log("You Found the ONE");
+        player.transform.position = winRoom.position;
+        isPlaying = false;
+        StartCoroutine(RestartGame());
     }
 
     public void LoseState()
     {
-
+        Debug.Log("WRONG");
+        player.transform.position = loseRoom.position;
+        isPlaying = false;
+        StartCoroutine(RestartGame());
     }
 }

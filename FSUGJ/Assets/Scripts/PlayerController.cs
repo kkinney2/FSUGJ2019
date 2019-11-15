@@ -109,20 +109,30 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward), out hit, 5);
 
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Character"))
+        if (hit.collider != null)
         {
-            if (Input.GetKeyUp(KeyCode.E))
+            Debug.Log("Looking at Collider");
+            if (hit.collider.gameObject.CompareTag("Character"))
             {
-                Debug.Log("User input detected!");
-                if (gameController.CompareWithTheOne(hit.collider.gameObject))
+                Debug.Log("Looking at Character");
+                hit.collider.gameObject.transform.parent.transform.parent.gameObject.GetComponent<Character>().isBeingLookedAt = true;
+                if (Input.GetKeyUp(KeyCode.E))
                 {
-                    // WIN
-                }
-                else
-                {
-                    // LOSE
+                    Debug.Log("User input detected!");
+                    if (gameController.CompareWithTheOne(hit.collider.gameObject.transform.parent.transform.parent.gameObject))
+                    {
+                        // WIN
+                        gameController.WinState();
+                    }
+                    else
+                    {
+                        // LOSE
+                        gameController.LoseState();
+                    }
                 }
             }
+            
+            
         }
     }
 
